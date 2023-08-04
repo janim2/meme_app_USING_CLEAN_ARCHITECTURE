@@ -25,7 +25,8 @@ mixin _$MemesModel {
   String get url => throw _privateConstructorUsedError;
   int get width => throw _privateConstructorUsedError;
   int get height => throw _privateConstructorUsedError;
-  int get boxCount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'box_count')
+  int? get boxCount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +46,7 @@ abstract class $MemesModelCopyWith<$Res> {
       String url,
       int width,
       int height,
-      int boxCount});
+      @JsonKey(name: 'box_count') int? boxCount});
 }
 
 /// @nodoc
@@ -66,7 +67,7 @@ class _$MemesModelCopyWithImpl<$Res, $Val extends MemesModel>
     Object? url = null,
     Object? width = null,
     Object? height = null,
-    Object? boxCount = null,
+    Object? boxCount = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -89,10 +90,10 @@ class _$MemesModelCopyWithImpl<$Res, $Val extends MemesModel>
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
               as int,
-      boxCount: null == boxCount
+      boxCount: freezed == boxCount
           ? _value.boxCount
           : boxCount // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 }
@@ -111,7 +112,7 @@ abstract class _$$_MemesModelCopyWith<$Res>
       String url,
       int width,
       int height,
-      int boxCount});
+      @JsonKey(name: 'box_count') int? boxCount});
 }
 
 /// @nodoc
@@ -130,7 +131,7 @@ class __$$_MemesModelCopyWithImpl<$Res>
     Object? url = null,
     Object? width = null,
     Object? height = null,
-    Object? boxCount = null,
+    Object? boxCount = freezed,
   }) {
     return _then(_$_MemesModel(
       id: null == id
@@ -153,10 +154,10 @@ class __$$_MemesModelCopyWithImpl<$Res>
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
               as int,
-      boxCount: null == boxCount
+      boxCount: freezed == boxCount
           ? _value.boxCount
           : boxCount // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -170,7 +171,7 @@ class _$_MemesModel implements _MemesModel {
       required this.url,
       required this.width,
       required this.height,
-      required this.boxCount});
+      @JsonKey(name: 'box_count') this.boxCount});
 
   factory _$_MemesModel.fromJson(Map<String, dynamic> json) =>
       _$$_MemesModelFromJson(json);
@@ -185,8 +186,10 @@ class _$_MemesModel implements _MemesModel {
   final int width;
   @override
   final int height;
+
   @override
-  final int boxCount;
+  @JsonKey(name: 'box_count')
+  final int? boxCount;
 
   @override
   String toString() {
@@ -233,7 +236,7 @@ abstract class _MemesModel implements MemesModel {
       required final String url,
       required final int width,
       required final int height,
-      required final int boxCount}) = _$_MemesModel;
+      @JsonKey(name: 'box_count') final int? boxCount}) = _$_MemesModel;
 
   factory _MemesModel.fromJson(Map<String, dynamic> json) =
       _$_MemesModel.fromJson;
@@ -249,7 +252,8 @@ abstract class _MemesModel implements MemesModel {
   @override
   int get height;
   @override
-  int get boxCount;
+  @JsonKey(name: 'box_count')
+  int? get boxCount;
   @override
   @JsonKey(ignore: true)
   _$$_MemesModelCopyWith<_$_MemesModel> get copyWith =>

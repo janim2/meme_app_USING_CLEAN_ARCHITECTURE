@@ -15,7 +15,7 @@ _$_MemesModel _$$_MemesModelFromJson(Map<String, dynamic> json) =>
       url: json['url'] as String,
       width: json['width'] as int,
       height: json['height'] as int,
-      boxCount: json['boxCount'] as int,
+      boxCount: json['box_count'] as int?,
     );
 
 Map<String, dynamic> _$$_MemesModelToJson(_$_MemesModel instance) =>
@@ -25,5 +25,5 @@ Map<String, dynamic> _$$_MemesModelToJson(_$_MemesModel instance) =>
       'url': instance.url,
       'width': instance.width,
       'height': instance.height,
-      'boxCount': instance.boxCount,
+      'box_count': instance.boxCount,
     };

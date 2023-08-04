@@ -7,7 +7,10 @@ const memeImageKey = Key('meme-image');
 const memeNameKey = Key('meme-name');
 
 class MemeCard extends StatelessWidget {
-  const MemeCard({super.key, required this.meme});
+  const MemeCard({
+    super.key,
+    required this.meme,
+  });
 
   final Memes meme;
 
@@ -18,10 +21,12 @@ class MemeCard extends StatelessWidget {
       children: [
         Image.network(
           meme.url,
-          fit: BoxFit.fitWidth,
           key: memeImageKey,
+          fit: BoxFit.fitWidth,
         ),
-        const SizedBox(height: 20),
+        const SizedBox(
+          height: 20,
+        ),
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: Text(
@@ -29,7 +34,7 @@ class MemeCard extends StatelessWidget {
             key: memeNameKey,
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-        ),
+        )
       ],
     );
   }

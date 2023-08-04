@@ -21,7 +21,7 @@ class MemeDataSourceImpl implements MemeDataSources {
   @override
   Future<Either<Failure, List<Memes>>> getMemes() async {
     final response = await dio.get(baseUrl);
-    debugPrint(response.data);
+    debugPrint(response.data.toString());
 
     // return const Left(Failure());
 

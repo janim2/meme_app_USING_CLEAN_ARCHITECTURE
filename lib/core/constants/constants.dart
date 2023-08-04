@@ -1,1 +1,1 @@
-const baseUrl = "https://api.imgflip.com/get_memes";
+const baseUrl = 'https://api.imgflip.com/get_memes';

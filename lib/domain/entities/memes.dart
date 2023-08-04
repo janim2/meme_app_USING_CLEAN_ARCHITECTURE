@@ -13,5 +13,5 @@ class Memes {
   final String url;
   final int width;
   final int height;
-  final int boxCount;
+  final int? boxCount;
 }

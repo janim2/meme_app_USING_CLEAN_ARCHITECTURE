@@ -11,7 +11,10 @@ const alignWidgetKey = Key('align-widget');
 const errorTextKey = Key('error-text');
 
 class MemeAppHome extends StatefulWidget {
-  const MemeAppHome({super.key, this.getMemeBloc});
+  const MemeAppHome({
+    super.key,
+    this.getMemeBloc,
+  });
 
   final GetMemeBloc? getMemeBloc;
 
@@ -24,8 +27,10 @@ class _MemeAppHomeState extends State<MemeAppHome> {
 
   @override
   void initState() {
-    _getMemeBloc =
-        widget.getMemeBloc ?? GetMemeBloc(getMemes: getIt<GetMemes>());
+    _getMemeBloc = widget.getMemeBloc ??
+        GetMemeBloc(
+          getMemes: getIt<GetMemes>(),
+        );
     super.initState();
 
     _getMemeBloc.add(const GetMemeEvent.getMemes());
@@ -34,28 +39,36 @@ class _MemeAppHomeState extends State<MemeAppHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Align(
-            key: alignWidgetKey,
-            alignment: Alignment.center,
-            child: BlocProvider(
-              create: (context) => _getMemeBloc,
-              child: BlocBuilder<GetMemeBloc, GetMemeState>(
-                builder: (context, state) {
-                  if (state.loading) {
-                    return const CircularProgressIndicator();
-                  } else if (state.failure != null) {
-                    return Text(
-                        key: errorTextKey, 'Error ${state.failure?.message}');
-                  }
-                  return Swiper(
-                      itemBuilder: (BuildContext context, int index) {
-                        final meme = state.memes![index];
-                        return MemeCard(meme: meme);
-                      },
-                      itemCount: state.memes?.length ?? 0,
-                      control: const SwiperControl(color: Colors.black));
+      body: Align(
+        key: alignWidgetKey,
+        alignment: Alignment.center,
+        child: BlocProvider(
+          create: (context) => _getMemeBloc,
+          child: BlocBuilder<GetMemeBloc, GetMemeState>(
+            builder: (context, state) {
+              if (state.loading) {
+                return const CircularProgressIndicator();
+              } else if (state.failure != null) {
+                return Text(
+                  'Error ${state.failure?.message}',
+                  key: errorTextKey,
+                );
+              }
+
+              return Swiper(
+                itemBuilder: (BuildContext context, int index) {
+                  final meme = state.memes![index];
+                  return MemeCard(meme: meme);
                 },
-              ),
-            )));
+                itemCount: state.memes?.length ?? 0,
+                control: const SwiperControl(
+                  color: Colors.black,
+                ),
+              );
+            },
+          ),
+        ),
+      ),
+    );
   }
 }

@@ -12,7 +12,8 @@ class MemesModel extends Memes with _$MemesModel {
     required String url,
     required int width,
     required int height,
-    required int boxCount,
+    // ignore: invalid_annotation_target
+    @JsonKey(name: 'box_count') int? boxCount,
   }) = _MemesModel;
 
   factory MemesModel.fromJson(Map<String, dynamic> json) =>

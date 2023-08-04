@@ -7,7 +7,6 @@ class GetMemeState with _$GetMemeState {
     List<Memes>? memes,
     Failure? failure,
   }) = _GetMemeState;
-
   factory GetMemeState.initial({
     bool loading = false,
     List<Memes>? memes,
