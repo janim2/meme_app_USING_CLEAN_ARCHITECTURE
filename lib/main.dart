@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:meme_app/presentation/views/meme_home_page.dart';
 
+import 'package:meme_app/core/injector/injector.dart' as injector;
+
 void main() {
+  injector.configureDependencies();
   runApp(const MemeApp());
 }
 
