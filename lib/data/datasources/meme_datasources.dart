@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:meme_app/core/constants/constants.dart';
 import 'package:meme_app/data/models/memes_model.dart';
 
 import '../../core/errors/failure.dart';
@@ -19,7 +20,7 @@ class MemeDataSourceImpl implements MemeDataSources {
   final Dio dio;
   @override
   Future<Either<Failure, List<Memes>>> getMemes() async {
-    final response = await dio.get("https://api.imgflip.com/get_memes");
+    final response = await dio.get(baseUrl);
     debugPrint(response.data);
 
     // return const Left(Failure());
